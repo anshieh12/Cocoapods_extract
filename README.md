@@ -1,4 +1,4 @@
-# Cocoapods_extract
+# Cocoapods Extract
 This is going to read the podspec.json files from the https://github.com/CocoaPods/Specs repository and extract information to populate sql database.
 
 ## Getting Started
@@ -9,14 +9,14 @@ Please make sure that the local environemnt has python and postgres installed
 
 In Python make sure to have git and psycopy installed, if not do execute the steps below
 
-# pip install gitpython
-# pip install psycopg2
+pip install gitpython
+pip install psycopg2
 
 In postgres, make sure the database is created, if not excute the steps below
 
-# psql -U postgres
-# CREATE DATABASE cocoapods;
-# \connect cocoa pods;
+psql -U postgres
+CREATE DATABASE cocoapods;
+\connect cocoapods;
 
 ## Deployment
 
@@ -32,6 +32,6 @@ Step 5 - Run the Cocoapods__update_clone_tables.py file to insert information fr
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License
 
 
