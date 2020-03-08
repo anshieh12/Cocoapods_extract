@@ -1,91 +1,37 @@
 # Cocoapods_extract
 This is going to read the podspec.json files from the https://github.com/CocoaPods/Specs repository and extract information to populate sql database.
 
-# Project Title
-
-One Paragraph of project description goes here
-
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Please make sure that the local environemnt has python and postgres installed
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+In Python make sure to have git and psycopy installed, if not do execute the steps below
 
-```
-Give examples
-```
+# pip install gitpython
+# pip install psycopg2
 
-### Installing
+In postgres, make sure the database is created, if not excute the steps below
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+# psql -U postgres
+# CREATE DATABASE cocoapods;
+# \connect cocoa pods;
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Step 1 - Run the Cocoapods_clone_repo.py file to clone the https://github.com/CocoaPods/Specs repo to your local direcotry. The script will ask you to input the url of the github repo you want to download, as well as the path of the local directory where you want to clone to.
 
-## Built With
+Step 2 - Run the Cocoapods__create_tables.py file to create the library and library_version table in postgres. The script will ask you to input the database name, the username and the password to connect to postgres sql.
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+Step 3 - Run the Cocoapods__insert_clone_tables.py file to parse the podspec.json files in the repo and populate the library and library_verson tables with information found in the files. The script will ask you to input the path of the local directory where you have saved the clone to, database name, the username and the password to connect to postgres sql.
 
-## Contributing
+Step 4 - Run the Cocoapods_update_repo.py file to check if there are new commits in the repository, this will rename the original repo to a backup directory and clone the url again to the local directory. The script will ask you to input the url of the github repo you want to download, the path to the new repo directory and the path to the original repo (backup direcotry).
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+Step 5 - Run the Cocoapods__update_clone_tables.py file to insert information from the newly commited files to the library and library_version tables. The script will ask you to input the path to the new repo directory, the path to the original repo (backup direcotry), the database name, the username and the password to connect to postgres sql.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
 
