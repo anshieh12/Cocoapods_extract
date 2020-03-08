@@ -9,14 +9,14 @@ Please make sure that the local environemnt has python and postgres installed
 
 In Python make sure to have git and psycopy installed, if not do execute the steps below
 
-pip install gitpython
-pip install psycopg2
+pip install gitpython \n
+pip install psycopg2 \n
 
 In postgres, make sure the database is created, if not excute the steps below
 
-psql -U postgres
-CREATE DATABASE cocoapods;
-\connect cocoapods;
+psql -U postgres \n
+CREATE DATABASE cocoapods; \n
+\connect cocoapods; \n
 
 ## Deployment
 
